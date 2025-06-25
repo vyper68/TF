@@ -1,0 +1,136 @@
+{
+  "name": "add_theme",
+  "description": "Add a new theme or thematic element to the knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Theme's name or title",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of theme",
+      "required": true,
+      "enum": [
+        "Main Theme",
+        "Sub Theme",
+        "Character Theme",
+        "Relationship Theme",
+        "World Theme",
+        "Moral Theme"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the theme",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Development status of the theme",
+      "required": true,
+      "enum": [
+        "Introduced",
+        "Developing",
+        "Climax",
+        "Resolved",
+        "Ongoing"
+      ]
+    },
+    "importance": {
+      "type": "string",
+      "description": "The importance level of this theme in the story",
+      "required": true,
+      "enum": [
+        "Core",
+        "Major",
+        "Minor",
+        "Background"
+      ]
+    },
+    "currentDevelopment": {
+      "type": "string",
+      "description": "Current development stage and progress",
+      "required": true
+    },
+    "relatedCharacters": {
+      "type": "array",
+      "description": "Characters that embody or struggle with this theme",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "embodies_theme",
+        "description": "Characters associated with this theme"
+      }
+    },
+    "relatedQuests": {
+      "type": "array",
+      "description": "Quests or story arcs that explore this theme",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "explores_theme",
+        "description": "Quests that develop this theme"
+      }
+    },
+    "parentTheme": {
+      "type": "string",
+      "description": "Parent theme if this is a sub-theme",
+      "required": false,
+      "relationship": {
+        "edgeType": "sub_theme_of",
+        "description": "Parent theme relationship"
+      }
+    },
+    "subThemes": {
+      "type": "array",
+      "description": "Sub-themes that branch from this theme",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "contains_sub_theme",
+        "description": "Sub-themes contained within this theme"
+      }
+    },
+    "conflictingThemes": {
+      "type": "array",
+      "description": "Themes that conflict or contrast with this theme",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "conflicts_with",
+        "description": "Themes that create tension with this theme"
+      }
+    },
+    "symbolism": {
+      "type": "array",
+      "description": "Symbols, metaphors, or motifs associated with this theme",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "keyScenes": {
+      "type": "array",
+      "description": "Key scenes where this theme is prominently featured",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "resolution": {
+      "type": "string",
+      "description": "How this theme is resolved or concludes",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

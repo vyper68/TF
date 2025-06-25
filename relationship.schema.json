@@ -1,0 +1,194 @@
+{
+  "name": "add_relationship",
+  "description": "Add or update a relationship between characters in the knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Descriptive name of the relationship",
+      "required": true
+    },
+    "character1": {
+      "type": "string",
+      "description": "First character in the relationship",
+      "required": true,
+      "relationship": {
+        "edgeType": "has_relationship_with",
+        "description": "First character in the relationship"
+      }
+    },
+    "character2": {
+      "type": "string",
+      "description": "Second character in the relationship",
+      "required": true,
+      "relationship": {
+        "edgeType": "has_relationship_with",
+        "description": "Second character in the relationship"
+      }
+    },
+    "relationshipType": {
+      "type": "string",
+      "description": "Type of relationship between the characters",
+      "required": true,
+      "enum": [
+        "Family",
+        "Romantic",
+        "Friendship",
+        "Professional",
+        "Mentor-Student",
+        "Rivalry",
+        "Enemy",
+        "Alliance",
+        "Neutral",
+        "Complicated"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the relationship",
+      "required": true,
+      "enum": [
+        "Forming",
+        "Stable",
+        "Growing",
+        "Strained",
+        "Conflict",
+        "Broken",
+        "Healing",
+        "Ended"
+      ]
+    },
+    "intimacyLevel": {
+      "type": "number",
+      "description": "Level of closeness/intimacy (1-10, where 10 is highest)",
+      "required": true,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "trustLevel": {
+      "type": "number",
+      "description": "Level of trust between characters (1-10, where 10 is highest)",
+      "required": true,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "conflictLevel": {
+      "type": "number",
+      "description": "Level of conflict or tension (1-10, where 10 is highest)",
+      "required": true,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "character1Perspective": {
+      "type": "string",
+      "description": "How character1 views character2 and their relationship",
+      "required": true
+    },
+    "character2Perspective": {
+      "type": "string",
+      "description": "How character2 views character1 and their relationship",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the relationship dynamics",
+      "required": true
+    },
+    "history": {
+      "type": "string",
+      "description": "History of how this relationship developed",
+      "required": false
+    },
+    "keyEvents": {
+      "type": "array",
+      "description": "Key events that shaped this relationship",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "currentIssues": {
+      "type": "array",
+      "description": "Current unresolved issues between the characters",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "sharedExperiences": {
+      "type": "array",
+      "description": "Important shared experiences or memories",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "communicationStyle": {
+      "type": "string",
+      "description": "How these characters typically communicate with each other",
+      "required": false
+    },
+    "powerDynamic": {
+      "type": "string",
+      "description": "Power balance in the relationship",
+      "required": false,
+      "enum": [
+        "Equal",
+        "Character1 Dominant",
+        "Character2 Dominant",
+        "Shifting",
+        "Complex"
+      ]
+    },
+    "relationshipGoals": {
+      "type": "array",
+      "description": "What each character wants from this relationship",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "obstacles": {
+      "type": "array",
+      "description": "Obstacles preventing relationship development",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "relatedPlotArcs": {
+      "type": "array",
+      "description": "Plot arcs that involve this relationship",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "involves_relationship",
+        "description": "Plot arcs that develop this relationship"
+      }
+    },
+    "lastInteraction": {
+      "type": "string",
+      "description": "Description of their most recent interaction",
+      "required": false
+    },
+    "developmentDirection": {
+      "type": "string",
+      "description": "Expected direction of relationship development",
+      "required": false,
+      "enum": [
+        "Improving",
+        "Deteriorating",
+        "Stable",
+        "Uncertain",
+        "Cyclical"
+      ]
+    },
+    "publicVsPrivate": {
+      "type": "string",
+      "description": "How this relationship appears publicly vs privately",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

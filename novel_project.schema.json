@@ -1,0 +1,471 @@
+{
+  "name": "add_novel_project",
+  "description": "Add novel project settings and configuration to track overall novel metadata, writing progress, and author intentions",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Official title of the novel project",
+      "required": true
+    },
+    "genre": {
+      "type": "array",
+      "description": "Literary genres of the novel",
+      "required": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "玄幻", "仙俠", "科幻", "都市", "歷史", "軍事", "網遊", "競技",
+          "靈異", "同人", "輕小說", "女頻", "言情", "古代言情", "現代言情",
+          "幻想言情", "懸疑", "推理", "恐怖", "武俠", "其他"
+        ]
+      }
+    },
+    "targetAudience": {
+      "type": "object",
+      "description": "Target reader demographics and preferences",
+      "required": true,
+      "properties": {
+        "ageGroup": {
+          "type": "string",
+          "enum": ["青少年(13-17)", "年輕成人(18-25)", "成人(26-35)", "中年(36-50)", "全年齡向"]
+        },
+        "gender": {
+          "type": "string", 
+          "enum": ["男頻", "女頻", "雙頻"]
+        },
+        "readingLevel": {
+          "type": "string",
+          "enum": ["輕鬆", "一般", "深度", "專業"]
+        },
+        "platform": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["起點中文網", "晉江文學城", "縱橫中文網", "17K小說網", "番茄小說", "QQ閱讀", "其他平台"]
+          }
+        }
+      }
+    },
+    "writingStyle": {
+      "type": "object",
+      "description": "Writing style and tone preferences",
+      "required": true,
+      "properties": {
+        "narrativePerspective": {
+          "type": "string",
+          "enum": ["第一人稱", "第二人稱", "第三人稱限知", "第三人稱全知", "多視角"]
+        },
+        "writingTone": {
+          "type": "string",
+          "enum": ["輕鬆幽默", "嚴肅深沉", "熱血激昂", "溫馨治愈", "黑暗沉重", "詩意唯美", "現實主義"]
+        },
+        "languageStyle": {
+          "type": "string",
+          "enum": ["現代白話", "古典文言", "網絡用語", "學術正式", "方言特色"]
+        },
+        "pacing": {
+          "type": "string",
+          "enum": ["快節奏", "中等節奏", "慢節奏", "變化節奏"]
+        },
+        "descriptionDensity": {
+          "type": "string",
+          "enum": ["簡潔", "適中", "詳細", "豐富"]
+        }
+      }
+    },
+    "plannedLength": {
+      "type": "object",
+      "description": "Target length and structure planning",
+      "required": true,
+      "properties": {
+        "targetWordCount": {
+          "type": "number",
+          "description": "Target total word count",
+          "minimum": 1000,
+          "maximum": 10000000
+        },
+        "plannedChapters": {
+          "type": "number",
+          "description": "Planned number of chapters",
+          "minimum": 1
+        },
+        "wordsPerChapter": {
+          "type": "number",
+          "description": "Average words per chapter",
+          "minimum": 500,
+          "maximum": 50000
+        },
+        "plannedVolumes": {
+          "type": "number",
+          "description": "Number of volumes/books planned",
+          "minimum": 1
+        },
+        "estimatedCompletionMonths": {
+          "type": "number",
+          "description": "Estimated months to complete",
+          "minimum": 1
+        }
+      }
+    },
+    "currentProgress": {
+      "type": "object",
+      "description": "Current writing progress tracking",
+      "required": true,
+      "properties": {
+        "currentWordCount": {
+          "type": "number",
+          "description": "Current actual word count",
+          "minimum": 0
+        },
+        "currentChapter": {
+          "type": "string",
+          "description": "Current chapter being written"
+        },
+        "completionPercentage": {
+          "type": "number",
+          "description": "Overall completion percentage",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "lastUpdateDate": {
+          "type": "string",
+          "description": "Last update date (YYYY-MM-DD format)"
+        },
+        "dailyWordGoal": {
+          "type": "number",
+          "description": "Daily writing word count goal",
+          "minimum": 100
+        }
+      }
+    },
+    "plotStructure": {
+      "type": "object",
+      "description": "Overall plot structure and pacing",
+      "required": false,
+      "properties": {
+        "mainPlotlineCount": {
+          "type": "number",
+          "description": "Number of main plot lines",
+          "minimum": 1
+        },
+        "subplotCount": {
+          "type": "number",
+          "description": "Number of subplots"
+        },
+        "actStructure": {
+          "type": "string",
+          "enum": ["多波浪式螺旋結構", "升級流結構", "三幕劇", "五幕劇", "七點結構", "英雄之旅", "自定義"]
+        },
+        "webNovelPacing": {
+          "type": "object",
+          "description": "網路小說節奏設計",
+          "properties": {
+            "openingHookChapters": {
+              "type": "number",
+              "description": "開局爽點章節數 (建議3-5章)",
+              "minimum": 1,
+              "maximum": 10
+            },
+            "minorClimaxFrequency": {
+              "type": "number", 
+              "description": "小爽點頻率 (每N章一次)",
+              "minimum": 3,
+              "maximum": 10
+            },
+            "majorClimaxFrequency": {
+              "type": "number",
+              "description": "大爽點頻率 (每N章一次)", 
+              "minimum": 15,
+              "maximum": 40
+            },
+            "powerLevelStages": {
+              "type": "number",
+              "description": "能力等級階段數",
+              "minimum": 3,
+              "maximum": 20
+            },
+            "suspenseThreads": {
+              "type": "number",
+              "description": "並行懸念線數量",
+              "minimum": 1,
+              "maximum": 8
+            }
+          }
+        },
+        "conflictType": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["人與人", "人與自己", "人與自然", "人與社會", "人與科技", "人與命運"]
+          }
+        }
+      }
+    },
+    "worldBuilding": {
+      "type": "object",
+      "description": "World setting and universe building",
+      "required": false,
+      "properties": {
+        "settingType": {
+          "type": "string",
+          "enum": ["現實世界", "架空世界", "歷史背景", "未來世界", "平行世界", "奇幻世界"]
+        },
+        "timePeriod": {
+          "type": "string",
+          "description": "Time period or era of the story"
+        },
+        "magicSystem": {
+          "type": "string",
+          "enum": ["無魔法", "軟魔法系統", "硬魔法系統", "科學幻想", "超能力"]
+        },
+        "technologyLevel": {
+          "type": "string",
+          "enum": ["古代", "中世紀", "近代", "現代", "未來", "混合"]
+        },
+        "cultureComplexity": {
+          "type": "string",
+          "enum": ["簡單", "中等", "複雜", "極其複雜"]
+        }
+      }
+    },
+    "characterSettings": {
+      "type": "object",
+      "description": "Character development and relationship settings",
+      "required": false,
+      "properties": {
+        "mainCharacterCount": {
+          "type": "number",
+          "description": "Number of main characters",
+          "minimum": 1
+        },
+        "supportingCharacterCount": {
+          "type": "number",
+          "description": "Number of supporting characters"
+        },
+        "characterDevelopmentFocus": {
+          "type": "string",
+          "enum": ["主角中心", "雙主角", "群像劇", "多視角"]
+        },
+        "romanceLevel": {
+          "type": "string",
+          "enum": ["無", "輕度", "中等", "重點", "核心"]
+        },
+        "relationshipComplexity": {
+          "type": "string",
+          "enum": ["簡單", "中等", "複雜", "非常複雜"]
+        }
+      }
+    },
+    "thematicElements": {
+      "type": "object",
+      "description": "Thematic and symbolic elements",
+      "required": false,
+      "properties": {
+        "primaryThemes": {
+          "type": "array",
+          "description": "Main themes explored in the novel",
+          "items": {
+            "type": "string"
+          }
+        },
+        "secondaryThemes": {
+          "type": "array",
+          "description": "Secondary themes",
+          "items": {
+            "type": "string"
+          }
+        },
+        "symbolism": {
+          "type": "array",
+          "description": "Important symbolic elements",
+          "items": {
+            "type": "string"
+          }
+        },
+        "moralComplexity": {
+          "type": "string",
+          "enum": ["黑白分明", "灰色道德", "相對主義", "哲學探討"]
+        }
+      }
+    },
+    "publicationGoals": {
+      "type": "object",
+      "description": "Publication and commercial goals",
+      "required": false,
+      "properties": {
+        "publicationType": {
+          "type": "string",
+          "enum": ["網絡連載", "出版社出版", "自費出版", "電子書", "有聲書"]
+        },
+        "monetizationStrategy": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["訂閱", "打賞", "版權售賣", "影視改編", "遊戲改編", "周邊商品"]
+          }
+        },
+        "targetRevenue": {
+          "type": "number",
+          "description": "Target revenue goal"
+        },
+        "marketingStrategy": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["社交媒體", "讀者群體", "書評推廣", "作者互推", "平台推薦"]
+          }
+        }
+      }
+    },
+    "writingSchedule": {
+      "type": "object",
+      "description": "Writing schedule and habits",
+      "required": false,
+      "properties": {
+        "updateFrequency": {
+          "type": "string",
+          "enum": ["每日更新", "隔日更新", "每週2-3次", "每週1次", "不定期"]
+        },
+        "preferredWritingTime": {
+          "type": "string",
+          "enum": ["早晨", "上午", "下午", "晚上", "深夜", "不固定"]
+        },
+        "writingLocation": {
+          "type": "string",
+          "enum": ["家中", "咖啡廳", "圖書館", "辦公室", "戶外", "不固定"]
+        },
+        "inspirationSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "qualityTargets": {
+      "type": "object",
+      "description": "Quality and reader engagement targets",
+      "required": false,
+      "properties": {
+        "targetRating": {
+          "type": "number",
+          "description": "Target reader rating (1-10)",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "targetReaderCount": {
+          "type": "number",
+          "description": "Target number of readers"
+        },
+        "targetCommentCount": {
+          "type": "number",
+          "description": "Target comments per chapter"
+        },
+        "revisionRounds": {
+          "type": "number",
+          "description": "Planned revision rounds",
+          "minimum": 1
+        }
+      }
+    },
+    "researchNeeds": {
+      "type": "object",
+      "description": "Research requirements for authenticity",
+      "required": false,
+      "properties": {
+        "historicalResearch": {
+          "type": "boolean",
+          "description": "Requires historical research"
+        },
+        "scientificResearch": {
+          "type": "boolean", 
+          "description": "Requires scientific research"
+        },
+        "culturalResearch": {
+          "type": "boolean",
+          "description": "Requires cultural research"
+        },
+        "technicalResearch": {
+          "type": "boolean",
+          "description": "Requires technical research"
+        },
+        "researchSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "creativeConstraints": {
+      "type": "object",
+      "description": "Creative constraints and guidelines",
+      "required": false,
+      "properties": {
+        "contentRating": {
+          "type": "string",
+          "enum": ["全年齡", "青少年", "成人向", "限制級"]
+        },
+        "sensitiveTopic": {
+          "type": "array",
+          "description": "Sensitive topics to handle carefully",
+          "items": {
+            "type": "string"
+          }
+        },
+        "platformRestrictions": {
+          "type": "array",
+          "description": "Platform-specific content restrictions",
+          "items": {
+            "type": "string"
+          }
+        },
+        "personalRedLines": {
+          "type": "array",
+          "description": "Author's personal content boundaries",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "inspirationRecord": {
+      "type": "object",
+      "description": "Inspiration and reference tracking",
+      "required": false,
+      "properties": {
+        "originalInspiration": {
+          "type": "string",
+          "description": "What originally inspired this novel"
+        },
+        "influenceWorks": {
+          "type": "array",
+          "description": "Other works that influenced this novel",
+          "items": {
+            "type": "string"
+          }
+        },
+        "referenceBooks": {
+          "type": "array",
+          "description": "Reference books used for research",
+          "items": {
+            "type": "string"
+          }
+        },
+        "musicPlaylist": {
+          "type": "array",
+          "description": "Music that inspires writing",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional author notes and reminders",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

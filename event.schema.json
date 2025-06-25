@@ -1,0 +1,157 @@
+{
+  "name": "add_event",
+  "description": "Add a new event or time-based occurrence to the novel's knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name or title of the event",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "The category of event",
+      "required": true,
+      "enum": [
+        "Plot Event",
+        "Character Moment",
+        "Historical Event",
+        "Flashback",
+        "Dream/Vision",
+        "Dialogue Scene",
+        "Action Scene",
+        "Revelation",
+        "Conflict",
+        "Resolution",
+        "Backstory",
+        "Setting Description"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of what happens in the event",
+      "required": true
+    },
+    "date": {
+      "type": "string",
+      "description": "The specific date when the event occurs",
+      "required": false
+    },
+    "time": {
+      "type": "string",
+      "description": "The specific time of day when the event occurs",
+      "required": false
+    },
+    "timeframe": {
+      "type": "string",
+      "description": "Duration or timeframe of the event",
+      "required": false
+    },
+    "chronologicalOrder": {
+      "type": "number",
+      "description": "Sequential order of this event in the story timeline",
+      "required": false
+    },
+    "storyOrder": {
+      "type": "number",
+      "description": "Order in which this event is revealed to the reader",
+      "required": false
+    },
+    "importance": {
+      "type": "string",
+      "description": "Significance of this event to the overall story",
+      "required": true,
+      "enum": [
+        "Climactic",
+        "Major Turning Point",
+        "Character Development",
+        "Plot Advancement",
+        "Background/Atmosphere",
+        "Setup/Foreshadowing"
+      ]
+    },
+    "participants": {
+      "type": "array",
+      "description": "Characters involved in or witnessing the event",
+      "required": false,
+      "relationship": {
+        "edgeType": "participates_in",
+        "description": "Characters involved in this event"
+      }
+    },
+    "location": {
+      "type": "string",
+      "description": "Where the event takes place",
+      "required": false,
+      "relationship": {
+        "edgeType": "occurs_at",
+        "description": "Location where this event happens"
+      }
+    },
+    "relatedPlotArcs": {
+      "type": "array",
+      "description": "Plot arcs this event belongs to or influences",
+      "required": false,
+      "relationship": {
+        "edgeType": "part_of",
+        "description": "Plot arcs containing this event"
+      }
+    },
+    "consequences": {
+      "type": "array",
+      "description": "What happens as a result of this event",
+      "required": false
+    },
+    "preconditions": {
+      "type": "array",
+      "description": "What needs to happen before this event can occur",
+      "required": false
+    },
+    "emotionalTone": {
+      "type": "string",
+      "description": "The emotional atmosphere of the event",
+      "required": false,
+      "enum": [
+        "Joyful",
+        "Tragic",
+        "Tense",
+        "Peaceful",
+        "Mysterious",
+        "Romantic",
+        "Frightening",
+        "Hopeful",
+        "Melancholic",
+        "Triumphant"
+      ]
+    },
+    "themes": {
+      "type": "array",
+      "description": "Themes explored or expressed in this event",
+      "required": false,
+      "relationship": {
+        "edgeType": "explores",
+        "description": "Themes explored in this event"
+      }
+    },
+    "symbolism": {
+      "type": "array",
+      "description": "Symbolic elements present in the event",
+      "required": false
+    },
+    "weather": {
+      "type": "string",
+      "description": "Weather conditions during the event",
+      "required": false
+    },
+    "pointOfView": {
+      "type": "string",
+      "description": "Through whose perspective the event is shown",
+      "required": false
+    },
+    "narrativePurpose": {
+      "type": "string",
+      "description": "Why this event is important to the story structure",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

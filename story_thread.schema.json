@@ -1,0 +1,70 @@
+{
+  "name": "add_story_thread",
+  "description": "Add a new story thread to track plot threads, mysteries, foreshadowing, and narrative elements that need resolution",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the story thread or mystery",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of story thread",
+      "enum": ["Mystery", "Foreshadowing", "Character Arc", "Plot Thread", "Unresolved Conflict", "Reader Question", "Chekhov's Gun", "Subplot Hook"],
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the story thread",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the story thread",
+      "enum": ["Planted", "Developing", "Approaching Resolution", "Resolved", "Abandoned"],
+      "required": true
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority level for resolution",
+      "enum": ["Critical", "High", "Medium", "Low"],
+      "required": true
+    },
+    "introducedIn": {
+      "type": "string",
+      "description": "Where this thread was first introduced (chapter, scene, etc.)",
+      "required": false
+    },
+    "expectedResolution": {
+      "type": "string",
+      "description": "Planned resolution or payoff for this thread",
+      "required": false
+    },
+    "relatedCharacters": {
+      "type": "array",
+      "description": "Characters involved in this story thread",
+      "required": false
+    },
+    "relatedPlotArcs": {
+      "type": "array",
+      "description": "Plot arcs connected to this story thread",
+      "required": false
+    },
+    "clues": {
+      "type": "array",
+      "description": "Clues or hints related to this thread",
+      "required": false
+    },
+    "readerImpact": {
+      "type": "string",
+      "description": "Expected impact on readers when resolved",
+      "required": false
+    },
+    "symbolism": {
+      "type": "array",
+      "description": "Symbolic elements associated with this thread",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

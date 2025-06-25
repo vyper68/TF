@@ -1,0 +1,149 @@
+{
+  "name": "add_character",
+  "description": "Add a new character to the novel's knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Character's name",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "description": "Character's role in the story (protagonist, antagonist, supporting character, etc.)",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Character's current status in the story",
+      "required": true,
+      "enum": [
+        "Active",
+        "Inactive", 
+        "Deceased",
+        "Missing",
+        "Introduced",
+        "Developing",
+        "Arc Complete"
+      ]
+    },
+    "currentLocation": {
+      "type": "string",
+      "description": "The current location of the character in the story",
+      "required": true,
+      "relationship": {
+        "edgeType": "located_in",
+        "description": "The current location of the character"
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Physical appearance and distinctive features of the character",
+      "required": true
+    },
+    "gender": {
+      "type": "string",
+      "description": "Character's gender identity",
+      "required": false
+    },
+    "age": {
+      "type": "string",
+      "description": "Character's age or age range",
+      "required": false
+    },
+    "background": {
+      "type": "string",
+      "description": "Character's complete backstory and life history",
+      "required": false
+    },
+    "secret": {
+      "type": "string",
+      "description": "Hidden aspects of the character unknown to others",
+      "required": false
+    },
+    "origin": {
+      "type": "string",
+      "description": "Character's birthplace or origin location",
+      "required": false,
+      "relationship": {
+        "edgeType": "originates_from",
+        "description": "The origin location of the character"
+      }
+    },
+    "traits": {
+      "type": "array",
+      "description": "Personality traits, quirks, and characteristics",
+      "required": false
+    },
+    "abilities": {
+      "type": "array",
+      "description": "Special skills, talents, or supernatural abilities",
+      "required": false
+    },
+    "importance": {
+      "type": "string",
+      "description": "The character's significance in the story",
+      "required": false,
+      "enum": [
+        "Protagonist",
+        "Main Character",
+        "Supporting Character",
+        "Minor Character",
+        "Background Character"
+      ]
+    },
+    "reputation": {
+      "type": "string",
+      "description": "How the character is perceived by others in the story world",
+      "required": false
+    },
+    "socialStatus": {
+      "type": "string",
+      "description": "Character's social position, wealth, or class",
+      "required": false
+    },
+    "moralAlignment": {
+      "type": "string",
+      "description": "The character's moral compass and ethical stance",
+      "required": false,
+      "enum": [
+        "Heroic",
+        "Good",
+        "Neutral",
+        "Morally Ambiguous",
+        "Antagonistic",
+        "Villainous"
+      ]
+    },
+    "motivation": {
+      "type": "string",
+      "description": "The character's primary driving goals and desires",
+      "required": false
+    },
+    "characterArc": {
+      "type": "string",
+      "description": "The character's planned development journey throughout the story",
+      "required": false
+    },
+    "internalConflict": {
+      "type": "string",
+      "description": "The character's internal struggles and psychological conflicts",
+      "required": false
+    },
+    "fears": {
+      "type": "array",
+      "description": "Character's fears, phobias, or anxieties",
+      "required": false
+    },
+    "strengths": {
+      "type": "array",
+      "description": "Character's key strengths and positive qualities",
+      "required": false
+    },
+    "weaknesses": {
+      "type": "array",
+      "description": "Character's flaws, limitations, and vulnerabilities",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

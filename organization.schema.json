@@ -1,0 +1,157 @@
+{
+  "name": "add_organization",
+  "description": "Add a new organization, group, or institution to the novel's knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the organization",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of organization",
+      "required": true,
+      "enum": [
+        "Family",
+        "Business/Company",
+        "Government Agency",
+        "Educational Institution",
+        "Religious Organization",
+        "Social Club",
+        "Criminal Organization",
+        "Political Party",
+        "Military Unit",
+        "Cultural Group",
+        "Professional Association",
+        "Secret Society"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "A detailed description of the organization's nature and purpose",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Current operational status of the organization",
+      "required": true,
+      "enum": [
+        "Active",
+        "Disbanded",
+        "Dormant",
+        "Restructuring",
+        "Secretive",
+        "Public",
+        "Underground"
+      ]
+    },
+    "goals": {
+      "type": "array",
+      "description": "The main objectives, missions, or purposes of the organization",
+      "required": false
+    },
+    "leader": {
+      "type": "string",
+      "description": "The current leader or head of the organization",
+      "required": false,
+      "relationship": {
+        "edgeType": "led_by",
+        "description": "The character leading this organization"
+      }
+    },
+    "members": {
+      "type": "array",
+      "description": "Key members of the organization",
+      "required": false,
+      "relationship": {
+        "edgeType": "member_of",
+        "description": "Characters who are members of this organization"
+      }
+    },
+    "headquarters": {
+      "type": "string",
+      "description": "Primary location or base of operations",
+      "required": false,
+      "relationship": {
+        "edgeType": "headquartered_at",
+        "description": "Main location of the organization"
+      }
+    },
+    "foundingDate": {
+      "type": "string",
+      "description": "When the organization was established",
+      "required": false
+    },
+    "history": {
+      "type": "string",
+      "description": "Background and historical development of the organization",
+      "required": false
+    },
+    "influence": {
+      "type": "string",
+      "description": "The organization's level of power and reach",
+      "required": false,
+      "enum": [
+        "Global",
+        "National",
+        "Regional",
+        "Local",
+        "Limited",
+        "Underground"
+      ]
+    },
+    "relationships": {
+      "type": "array",
+      "description": "Relationships with other organizations",
+      "required": false
+    },
+    "resources": {
+      "type": "array",
+      "description": "Available resources (financial, material, human)",
+      "required": false
+    },
+    "secrets": {
+      "type": "array",
+      "description": "Hidden aspects or classified information",
+      "required": false
+    },
+    "publicReputation": {
+      "type": "string",
+      "description": "How the organization is perceived by the public",
+      "required": false
+    },
+    "internalCulture": {
+      "type": "string",
+      "description": "Internal values, traditions, and working environment",
+      "required": false
+    },
+    "relatedPlotArcs": {
+      "type": "array",
+      "description": "Plot arcs involving this organization",
+      "required": false,
+      "relationship": {
+        "edgeType": "involved_in",
+        "description": "Plot arcs where this organization plays a role"
+      }
+    },
+    "alliances": {
+      "type": "array",
+      "description": "Organizations this group is allied with",
+      "required": false,
+      "relationship": {
+        "edgeType": "allied_with",
+        "description": "Allied organizations"
+      }
+    },
+    "enemies": {
+      "type": "array",
+      "description": "Organizations in conflict with this group",
+      "required": false,
+      "relationship": {
+        "edgeType": "opposed_to",
+        "description": "Enemy organizations"
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,130 @@
+{
+  "name": "add_symbolic_object",
+  "description": "Add a new symbolic object or significant item to the novel's knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The object's name",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "description": "A detailed physical description of the object",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "The object's category",
+      "required": true,
+      "enum": [
+        "Personal Item",
+        "Heirloom",
+        "Document",
+        "Jewelry",
+        "Weapon",
+        "Tool",
+        "Artwork",
+        "Clothing",
+        "Book/Letter",
+        "Natural Object",
+        "Religious/Sacred Item",
+        "Gift",
+        "Found Object"
+      ]
+    },
+    "significance": {
+      "type": "string",
+      "description": "The narrative importance of the object",
+      "required": true,
+      "enum": [
+        "Critical Plot Device",
+        "Major Symbol",
+        "Character Defining",
+        "Supporting Element",
+        "Background Detail"
+      ]
+    },
+    "symbolicMeaning": {
+      "type": "array",
+      "description": "What the object represents or symbolizes in the story",
+      "required": true
+    },
+    "narrativeFunction": {
+      "type": "array",
+      "description": "The object's role in advancing plot or character development",
+      "required": true
+    },
+    "origin": {
+      "type": "string",
+      "description": "The object's backstory and how it came to be significant",
+      "required": false
+    },
+    "emotionalValue": {
+      "type": "string",
+      "description": "The emotional significance to characters",
+      "required": false
+    },
+    "physicalCondition": {
+      "type": "string",
+      "description": "Current state of the object (worn, pristine, damaged, etc.)",
+      "required": false
+    },
+    "location": {
+      "type": "string",
+      "description": "Where the object is currently located",
+      "required": false
+    },
+    "relatedCharacters": {
+      "type": "array",
+      "description": "Characters associated with the object",
+      "required": false,
+      "relationship": {
+        "edgeType": "connected_to",
+        "description": "Character connections to the object"
+      }
+    },
+    "relatedPlotArcs": {
+      "type": "array",
+      "description": "Plot arcs involving the object",
+      "required": false,
+      "relationship": {
+        "edgeType": "featured_in",
+        "description": "Plot arcs featuring this object"
+      }
+    },
+    "relatedThemes": {
+      "type": "array",
+      "description": "Themes this object helps express",
+      "required": false,
+      "relationship": {
+        "edgeType": "symbolizes",
+        "description": "Themes symbolized by this object"
+      }
+    },
+    "relatedSettings": {
+      "type": "array",
+      "description": "Settings associated with the object",
+      "required": false,
+      "relationship": {
+        "edgeType": "found_at",
+        "description": "Settings where this object appears"
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "description": "How the object changes throughout the story",
+      "required": false
+    },
+    "keyScenes": {
+      "type": "array",
+      "description": "Important scenes featuring this object",
+      "required": false
+    },
+    "culturalContext": {
+      "type": "string",
+      "description": "Cultural or historical context that adds meaning",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}

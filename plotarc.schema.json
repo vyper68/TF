@@ -1,0 +1,203 @@
+{
+  "name": "add_plotarc",
+  "description": "Add a new plot arc or narrative storyline to the knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Plot arc's name or title",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of plot arc",
+      "required": true,
+      "enum": [
+        "Main Plot",
+        "Subplot",
+        "Character Arc",
+        "Romance Arc",
+        "Mystery Arc",
+        "Action Arc",
+        "Backstory Arc"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the plot arc",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the plot arc",
+      "required": true,
+      "enum": [
+        "Planning",
+        "Setup",
+        "Rising Action",
+        "Climax",
+        "Falling Action",
+        "Resolution",
+        "Completed"
+      ]
+    },
+    "importance": {
+      "type": "string",
+      "description": "Importance level of this arc in the overall story",
+      "required": true,
+      "enum": [
+        "Critical",
+        "Major",
+        "Supporting",
+        "Minor"
+      ]
+    },
+    "progressPercentage": {
+      "type": "number",
+      "description": "Progress percentage of the arc (0-100)",
+      "required": true,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "startChapter": {
+      "type": "string",
+      "description": "Chapter or scene where this arc begins",
+      "required": false
+    },
+    "currentChapter": {
+      "type": "string",
+      "description": "Current chapter or scene in the arc",
+      "required": false
+    },
+    "expectedEndChapter": {
+      "type": "string",
+      "description": "Expected chapter or scene where this arc concludes",
+      "required": false
+    },
+    "mainCharacters": {
+      "type": "array",
+      "description": "Main characters involved in this plot arc",
+      "required": true,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "participates_in",
+        "description": "Characters involved in this plot arc"
+      }
+    },
+    "supportingCharacters": {
+      "type": "array",
+      "description": "Supporting characters that appear in this arc",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "supports_arc",
+        "description": "Supporting characters in this plot arc"
+      }
+    },
+    "keyLocations": {
+      "type": "array",
+      "description": "Important locations where this arc takes place",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "takes_place_in",
+        "description": "Locations where this arc occurs"
+      }
+    },
+    "relatedQuests": {
+      "type": "array",
+      "description": "Quests associated with this plot arc",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "part_of_arc",
+        "description": "Quests that are part of this plot arc"
+      }
+    },
+    "relatedThemes": {
+      "type": "array",
+      "description": "Themes explored in this plot arc",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "explores_theme",
+        "description": "Themes developed in this plot arc"
+      }
+    },
+    "parentArc": {
+      "type": "string",
+      "description": "Parent arc if this is a sub-arc",
+      "required": false,
+      "relationship": {
+        "edgeType": "sub_arc_of",
+        "description": "Parent plot arc relationship"
+      }
+    },
+    "subArcs": {
+      "type": "array",
+      "description": "Sub-arcs that branch from this main arc",
+      "required": false,
+      "items": {
+        "type": "string"
+      },
+      "relationship": {
+        "edgeType": "contains_sub_arc",
+        "description": "Sub-arcs contained within this plot arc"
+      }
+    },
+    "conflictType": {
+      "type": "string",
+      "description": "Type of conflict driving this arc",
+      "required": false,
+      "enum": [
+        "Man vs Man",
+        "Man vs Self",
+        "Man vs Nature",
+        "Man vs Society",
+        "Man vs Technology",
+        "Man vs Fate"
+      ]
+    },
+    "keyEvents": {
+      "type": "array",
+      "description": "Key events or turning points in this arc",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    "incitingIncident": {
+      "type": "string",
+      "description": "The event that triggers this plot arc",
+      "required": false
+    },
+    "climax": {
+      "type": "string",
+      "description": "The climactic moment of this arc",
+      "required": false
+    },
+    "resolution": {
+      "type": "string",
+      "description": "How this arc is resolved",
+      "required": false
+    },
+    "nextSteps": {
+      "type": "array",
+      "description": "Planned next developments in this arc",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

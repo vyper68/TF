@@ -1,0 +1,158 @@
+{
+  "name": "add_setting",
+  "description": "Add a new setting or location to the novel's knowledge graph",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Setting's name",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of setting",
+      "required": true,
+      "enum": [
+        "Indoor",
+        "Outdoor",
+        "Urban",
+        "Rural",
+        "Natural",
+        "Building",
+        "Room",
+        "Public Space",
+        "Private Space",
+        "Fantasy Location",
+        "Historical Location"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the setting's appearance and features",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Current narrative state of the setting",
+      "required": true,
+      "enum": [
+        "Active",
+        "Inactive",
+        "Destroyed",
+        "Changed",
+        "Hidden",
+        "Accessible",
+        "Restricted"
+      ]
+    },
+    "parentLocation": {
+      "type": "string",
+      "description": "The larger location this setting belongs to",
+      "required": false,
+      "relationship": {
+        "edgeType": "contains",
+        "description": "Parent location relationship"
+      }
+    },
+    "atmosphere": {
+      "type": "string",
+      "description": "The emotional mood and atmosphere of the setting",
+      "required": false
+    },
+    "accessibility": {
+      "type": "string",
+      "description": "How characters can enter, exit, or navigate the setting",
+      "required": false
+    },
+    "significance": {
+      "type": "string",
+      "description": "The narrative importance of this setting",
+      "required": false,
+      "enum": [
+        "Critical",
+        "Major",
+        "Supporting",
+        "Minor",
+        "Background"
+      ]
+    },
+    "timeOfDay": {
+      "type": "string",
+      "description": "Typical time when scenes occur in this setting",
+      "required": false
+    },
+    "weatherConditions": {
+      "type": "array",
+      "description": "Typical weather or environmental conditions",
+      "required": false
+    },
+    "notableFeatures": {
+      "type": "array",
+      "description": "Distinctive characteristics and important details of the setting",
+      "required": false
+    },
+    "sensoryDetails": {
+      "type": "object",
+      "description": "Sensory descriptions for immersive writing",
+      "required": false,
+      "properties": {
+        "sight": {"type": "string", "description": "Visual elements"},
+        "sound": {"type": "string", "description": "Auditory elements"},
+        "smell": {"type": "string", "description": "Olfactory elements"},
+        "touch": {"type": "string", "description": "Tactile elements"},
+        "taste": {"type": "string", "description": "Gustatory elements"}
+      }
+    },
+    "symbolicMeaning": {
+      "type": "string",
+      "description": "Symbolic or thematic significance of the setting",
+      "required": false
+    },
+    "subLocations": {
+      "type": "array",
+      "description": "Smaller settings contained within this location",
+      "required": false,
+      "relationship": {
+        "edgeType": "contains",
+        "description": "Sub-locations contained within this setting"
+      }
+    },
+    "relatedCharacters": {
+      "type": "array",
+      "description": "Characters associated with or present in this setting",
+      "required": false,
+      "relationship": {
+        "edgeType": "present_in",
+        "description": "Characters associated with the setting"
+      }
+    },
+    "relatedPlotArcs": {
+      "type": "array",
+      "description": "Plot arcs that take place in this setting",
+      "required": false,
+      "relationship": {
+        "edgeType": "takes_place_in",
+        "description": "Plot arcs associated with the setting"
+      }
+    },
+    "relatedArtifacts": {
+      "type": "array",
+      "description": "Important objects or items found at this setting",
+      "required": false,
+      "relationship": {
+        "edgeType": "located_at",
+        "description": "Objects associated with the setting"
+      }
+    },
+    "keyScenes": {
+      "type": "array",
+      "description": "Important scenes that occur in this setting",
+      "required": false
+    },
+    "historicalEvents": {
+      "type": "array",
+      "description": "Past events of significance that occurred here",
+      "required": false
+    }
+  },
+  "additionalProperties": true
+}
