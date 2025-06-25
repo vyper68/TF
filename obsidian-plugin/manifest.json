@@ -1,0 +1,11 @@
+{
+  "id": "novel-creation-assistant",
+  "name": "小說創作AI助手",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "整合MemoryMesh知識圖譜的AI協作小說創作工具，支援角色管理、情節規劃、時間線視覺化等功能",
+  "author": "您的名字",
+  "authorUrl": "https://github.com/yourusername",
+  "fundingUrl": "https://buymeacoffee.com/yourusername",
+  "isDesktopOnly": false
+}
